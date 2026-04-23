@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@keyframes scanMove {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+}
