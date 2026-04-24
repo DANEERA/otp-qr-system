@@ -3,7 +3,7 @@ import axios from "axios";
 import { Html5Qrcode } from "html5-qrcode";
 import Dashboard from "./pages/Dashboard";
 
-const API = "http://localhost:8787";
+const API = "https://otp-qr-system-production.up.railway.app";
 
 export default function App() {
   const [step, setStep] = useState(1);
