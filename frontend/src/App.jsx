@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Html5Qrcode } from "html5-qrcode";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./pages/Dashboard";
 
 const API = "http://localhost:8787";
 
