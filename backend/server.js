@@ -9,10 +9,13 @@ const prisma = require("./prismaClient");
 dotenv.config();
 
 const app = express();
-
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
+    origin: [
+      "http://localhost:5173",
+      "https://ruhunutetea-frontend.onrender.com",
+      "https://otp-qr-syste.onrender.com"
+    ],
     credentials: true,
   })
 );
@@ -20,13 +23,17 @@ app.use(
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.set("trust proxy", 1); // 🔥 MUST add
+
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "ruhunu-secret",
+    secret: process.env.SESSION_SECRET || "secret123",
     resave: false,
     saveUninitialized: false,
     cookie: {
       maxAge: 24 * 60 * 60 * 1000,
+      secure: process.env.NODE_ENV === "production", // HTTPS required
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     },
   })
 );
